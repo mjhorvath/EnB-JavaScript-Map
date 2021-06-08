@@ -1,0 +1,71 @@
+DATABASE
+- NAVs
+  - Not sure exactly what the 'nav_type', 'is_huge', 'exploration_range', and 'object_radius_patch' fields in 'sector_nav_points' mean.
+    - Currently, I only take 'in_radar' into account when determining what to draw. Should I refer to these instead?
+  - Should determine how much EL a NAV point awards, and how much can be gained per sector in total.
+    - Not sure what to look for. 'base_xp' is always set to 0 in the database.
+  + Check if planets/stations can also 'gate_to' somewhere...
+    + Done. They can.
+  + The 'sector_gate_to' data seems to be messed up.
+    + Fixed.
+  + All objects that appear in radar should go in the NAV group, regardless of type.
+    + Done.
+  + Only the NAV collection should contain objects that appear in radar. MOB and ore collections should be filtered so that they do not contain any of these objects.
+    + Decided not to due to unique data that appears for each object type. They are simply displayed multiple times (i.e. once per collection) instead.
+  - Not sure how to differentiate between the planets and moons.
+    - Might have to do this manually based on feedback of users.
+  + Starbases are not switching over to the green icons.
+    + Fixed.
+  - Starbases can be capital ships. Use a different icon for them?
+  - Show restrictions on gate usage based on race/class.
+    - Not sure where in the database to find this.
+- MOBs
+  - Not sure what the 'intelligence', 'bravery', and 'altruism' fields in 'mob_base' mean, and whether they are worth listing.
+  + MOBs and loot need to have levels displayed as well.
+    + Done.
+  - Not sure what the 'mob_count' field in 'sector_objects_mob' means.
+    - Is it the number of MOBs per spawn point, regardless of the associated creatures?
+    - What if the value is 1 and there are multiple creatures referenced? Are more than one spawned?
+  - Need to determine whether MOBs are ships, organics, etc.
+    - The database only lists numeric codes. Do not know what the codes correspond to.
+    - Not a big priority, regardless, since people tend to know this beforehand.
+  + Add the MOB relative distribution data to the sectors table. Gather and add similar data about ore.
+    + Done.
+- Ore
+  - Not sure what the 'fields' and 'pop_rock_chance' fields mean in 'sector_objects_harvestable'.
+    - Is 'fields' the shape of the resource field? I.e. circle, sphere, etc.?
+  - cannot figure out where the respawn times for ore are in the database.
+  + Not sure what the number after the name in the 'descr' field of 'assets' means.
+    + Represents the differently colored 3D models: cyan, yellow, magenta. Has been removed.
+- Loot
+  - Drop items have varying quantities which should maybe be listed.
+    - Not important enough, IMO.
+  - There is no way in the database to determine exactly *which* MOBs drop *which* items, AFAIK.
+
+APPLICATION
+- When changing zoom levels, scroll amounts need to be scaled also so that the same regions (more or less) remain visible.
++ Show mouse coordinates.
+  + Listed object coordinates in tooltips instead.
++ Show system names next to sector names.
+  + Done
+- Add another map for the galaxy with locations of systems/sectors.
++ Add images for planets and moons.
+  + Added image of a planet for all of them. Is there a way to differentiate between planets and moons in the database?
+- Add a search box.
+  - Not likely.
++ Make sure status of checkmarks and other input elements are analyzed or reset when refreshing the browser.
+  + Done. All settings except checkboxes are retained after a browser refresh. Checkboxes are reset.
+- Test in multiple browsers.
+  + Seems to work OK in Orca (Gecko-based) and Avant (IE-based).
+- Add individual 'Label' checkboxes for each group to toggle group labels.
+  - Only if people complain.
+- A little toolbar appears every time I hover over an image with the mouse. Very annoying.
+  - I was able to disable it in the browser.
++ Click on an icon to make the tooltip stick. Click again to unstick it.
+  + Done.
++ Link to EnB Arsenal wherever possible. (MOBs, loot, etc.)
+  + Done.
+- Add a checkbox to show/hide all tooltips at once.
+  - Tricky. Should I simply hide the layer? Should the tooltips be hidden under every circumstance?
+- Click on the location in the 'Gate to:' field to load that sector.
+  - Make sure this is disabled for stations.

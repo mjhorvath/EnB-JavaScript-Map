@@ -1,0 +1,45 @@
+*
+{font-family:Verdana;}
+body
+{background:#aaa;}
+/*{background:url(isometric_grid.png) fixed #000;}*/
+legend,label,h3,p,#sector_stats,#sector_cood
+{color:#fff;}
+h3
+{text-align:center;}
+.tny
+{font-size:x-small;}
+.cen
+{text-align:center;}
+a:link,a:visited
+{color:#cc0;text-decoration:none;}
+a:hover,a:active
+{color:#ff0;text-decoration:underline;}
+a:link img,a:visited img
+{border:2px solid transparent;}
+a:hover img,a:active img
+{border:2px solid #cc0;}
+#fram_elem a:link,#fram_elem a:visited
+{color:#000;text-decoration:underline;}
+#fram_elem a:hover,#fram_elem a:active
+{color:#aaa;text-decoration:underline;}
+#mapp_elem
+{position:relative;width:40px;height:40px;background:url(bakg_stars.png);margin:1px;}
+#fram_elem
+{position:relative;width:800px;height:600px;overflow:scroll;background:#c0c0c0;}
+#sector_select
+{width:28em;}
+#zoom_select
+{width:8em;}
+#sector_header,#big_table
+{margin:auto;}
+#axes_tl,#axes_tr,#axes_bl,#axes_br
+{position:absolute;border:dashed 1px #808080;}
+#sect_field,#size_field
+{display:inline;height:2.5em;}
+#plnt_elem,#labl_elem,#icon_elem,#note_elem
+{position:absolute;width:100%;height:100%;display:block;}
+#dec_labl_elem,#nav_labl_elem,#ore_labl_elem,#mob_labl_elem,
+#dec_icon_elem,#nav_icon_elem,#ore_icon_elem,#mob_icon_elem,
+#dec_note_elem,#nav_note_elem,#ore_note_elem,#mob_note_elem
+{position:absolute;width:100%;height:100%;display:block;}
