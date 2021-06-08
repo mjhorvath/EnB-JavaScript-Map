@@ -1,0 +1,125 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+	<base target="_blank"/>
+	<head>
+		<title>EnB JavaScript Sector Map</title>
+		<link rel="stylesheet" type="text/css" href="./map/style.css"/>
+		<meta name="Description" content="EnB JavaScript Sector Map"></meta>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+		<script type="text/javascript" src="./map/sec.js"></script>
+		<script type="text/javascript" src="./map/nav.js"></script>
+		<script type="text/javascript" src="./map/ore.js"></script>
+		<script type="text/javascript" src="./map/mob.js"></script>
+		<script type="text/javascript" src="./map/dec.js"></script>
+		<script type="text/javascript" src="./map/sys.js"></script>
+		<script type="text/javascript" src="./map/stat.js"></script>
+		<script type="text/javascript" src="./map/controls.js"></script>
+	</head>
+	<body onload="init();enable_checkbox()" style="background:#a0a0a0;">
+		<table style="margin:auto;">
+			<tr>
+				<td rowspan="3">
+					<fieldset>
+						<legend title="blahblah">Hide/Show</legend>
+						<form>
+							<input id="nav_box" type="checkbox" name="" checked="true"><label for="nav_box">NAVs</label><br/>
+							<input id="mob_box" type="checkbox" name="" checked="true"><label for="mob_box">MOBs</label><br/>
+							<input id="ore_box" type="checkbox" name="" checked="true"><label for="ore_box">Ore</label><br/>
+							<input id="dec_box" type="checkbox" name="" checked="true"><label for="dec_box">Deco</label><hr/>
+							<input id="lbl_box" type="checkbox" name="" checked="true"><label for="lbl_box">Labels</label><br/>
+						</form>
+					</fieldset>
+					<fieldset >
+						<legend>Zoom</legend>
+						<form>
+							<select id="zoom_select" style="width:8em;" onchange="change_zoom()">
+								<option value="0.50">50%</option>
+								<option value="0.75">75%</option>
+								<option value="1.00" selected="selected">100%</option>
+								<option value="1.25">125%</option>
+								<option value="1.50">150%</option>
+								<option value="2.00">200%</option>
+							</select>
+						</form>
+					</fieldset>
+					<fieldset>
+						<legend title="blahblah">Sector Info</legend>
+						<p id="sector_stats">blah blah blah blah blah blah blah blah blah blah blah blah</p>
+					</fieldset>
+					<fieldset>
+						<legend>Mouse XYZ</legend>
+						<form>
+							<div id="coo_elem" style="color:#ffffff;">XYZ</div>
+						</form>
+					</fieldset>
+				</td>
+				<td>
+					<h3 id="sector_header" style="margin:auto;">Ragnarok</h3>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fieldset>
+						<legend title="blahblah">Map</legend>
+						<div id="fram_elem" style="position:relative;width:800px;height:600px;overflow:scroll;background:#c0c0c0;">
+							<div id="mapp_elem" style="position:relative;width:40px;height:40px;background:url(./map/bakg_stars.png);margin:1px;">
+								<div id="plnt_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+								<div id="axes_tl" style="position:absolute;border:dashed 1px #808080;"></div>
+								<div id="axes_tr" style="position:absolute;border:dashed 1px #808080;"></div>
+								<div id="axes_bl" style="position:absolute;border:dashed 1px #808080;"></div>
+								<div id="axes_br" style="position:absolute;border:dashed 1px #808080;"></div>
+								<div id="labl_elem" style="position:absolute;width:100%;height:100%;display:block;">
+									<div id="dec_labl_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="nav_labl_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="ore_labl_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="mob_labl_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+								</div>
+								<div id="icon_elem" style="position:absolute;width:100%;height:100%;display:block;">
+									<div id="dec_icon_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="nav_icon_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="ore_icon_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="mob_icon_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+								</div>
+								<div id="note_elem" style="position:absolute;width:100%;height:100%;display:block;">
+									<div id="dec_note_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="nav_note_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="ore_note_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+									<div id="mob_note_elem" style="position:absolute;width:100%;height:100%;display:block;"></div>
+								</div>
+							</div>
+						</div>
+					</fieldset>
+				</td>
+			</tr>
+			<tr>
+				<td>
+					<fieldset style="display:inline;height:2.5em;">
+						<legend>Sector</legend>
+						<form>
+							<select id="sector_select" style="width:28em;"></select>
+							<input type="button" value="Change" onclick="change_sector()">
+						</form>
+					</fieldset>
+					<fieldset style="display:inline;height:2.5em;">
+						<legend>Map Size</legend>
+						<form>
+							<select id="mapsize_select">
+								<option value="0">640x480</option>
+								<option value="1" selected="selected">800x600</option>
+								<option value="2">1024x768</option>
+							</select>
+							<input type="button" value="Change" onclick="change_mapsize()">
+						</form>
+					</fieldset>
+				</td>
+			</tr>
+		</table>
+<!--
+adsense removed until I can figure out how to disable it locally
+-->
+		</p>
+		<p class="tny cen"><a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/"><img alt="Creative Commons License" src="http://creativecommons.org/images/public/somerights20.png"/></a></p>
+		<p class="tny cen">"EnB JavaScript Map" v0.9.6, by Michael Horvath. Licensed under a <a target="_blank" rel="license" href="http://creativecommons.org/licenses/LGPL/2.1/">Creative Commons GNU Lesser General Public License License</a>.</p>
+		<p class="tny cen">Data is up-to-date as of <a target="_blank" href="http://net-7.org/database/">2009-25-08</a>. View the current <a target="_blank" href="./map/notes.txt">to-do list</a>. Download the entire <a target="_blank" href="http://www.mediafire.com/file/y0ywqyiz2ty/enb_javascript_map_v0_9_0.zip">project</a> (may not be current). Visit my <a target="_blank" href="http://isometricland.com/blog">blog</a>.</p>
+	</body>
+</html>

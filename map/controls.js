@@ -178,10 +178,10 @@ function fill_map()
 	var stat_elem		= document.getElementById('sector_stats')
 	stat_elem.style.whiteSpace	= 'pre'
 	var stat_prot		= stat_list[sect_curr]
-	var stat_text		= 'MOBs\t\t(' + 'link'.link('enb_mob_distribution_table.php') + ')' +
+	var stat_text		= 'MOBs\t\t(' + 'link'.link('enb_mob_distribution_table.html') + ')' +
 				  '\nTotal:'.italics()	+ '\t' + stat_prot[0] +
 				  '\nMedian:'.italics()	+ '\t' + stat_prot[1] + '\n' +
-				  '\nOre\t\t(' + 'link'.link('enb_ore_distribution_table.php') + ')' +
+				  '\nOre\t\t(' + 'link'.link('enb_ore_distribution_table.html') + ')' +
 				  '\nTotal:'.italics()	+ '\t' + stat_prot[2] +
 				  '\nMedian:'.italics()	+ '\t' + stat_prot[3]
 	stat_elem.innerHTML	= stat_text
